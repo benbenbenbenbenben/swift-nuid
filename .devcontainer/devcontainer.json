@@ -25,7 +25,7 @@
             ]
         }
     },
-    "postCreateCommand": "sudo apt-get update && apt-get install libsodium-dev -y",
+    "postCreateCommand": "sudo apt-get update && sudo apt-get install libsodium-dev -y",
     // Use 'forwardPorts' to make a list of ports inside the container available locally.
     // "forwardPorts": [],
 
