@@ -50,14 +50,8 @@ public class Nuid {
         self.inc = MIN_INC + Int64.random(in: 0..<(MAX_INC - MIN_INC))
     }
 
-     func randomizePrefix() {
-        var cb = [UInt8](repeating: 0, count: PRE_LEN)
-        let result = SecRandomCopyBytes(kSecRandomDefault, PRE_LEN, &cb)
-
-        if result != errSecSuccess {
-            fatalError("nuid: failed generating crypto random number")
-        }
-
+    func randomizePrefix() {
+        let cb = SystemRandomNumberGenerator.randomBytes(count: PRE_LEN)
         for i in 0..<PRE_LEN {
             self.pre[i] = DIGITS[Int(cb[i]) % BASE]
         }
